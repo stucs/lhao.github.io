@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="总结项目改进过程 jsp这部分纯碎使用jsp开发，目的是熟悉jsp的基础知识．所用到的知识包括：  JSP基础语法 生命周期 页面之间跳转 使用bean  生命周期 页面跳转页面之间直接使用超链接进行跳转.href一般为本路路径下目标jsp文件位置.例: 12&lt;a href&#x3D;&quot;&lt;%&#x3D;request.getContextPath()%&gt;&#x2F;ca">
+<meta property="og:type" content="article">
+<meta property="og:title" content="store总结">
+<meta property="og:url" content="http://yoursite.com/2020/02/06/store%E6%80%BB%E7%BB%93/index.html">
+<meta property="og:site_name" content="李浩的博客">
+<meta property="og:description" content="总结项目改进过程 jsp这部分纯碎使用jsp开发，目的是熟悉jsp的基础知识．所用到的知识包括：  JSP基础语法 生命周期 页面之间跳转 使用bean  生命周期 页面跳转页面之间直接使用超链接进行跳转.href一般为本路路径下目标jsp文件位置.例: 12&lt;a href&#x3D;&quot;&lt;%&#x3D;request.getContextPath()%&gt;&#x2F;ca">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/75be933bly1ftof3p13lbj20gl06jq35.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/75be933bly1ftnhswm4sej20d70jdmxm.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/75be933bly1fto7uxum2fj20b70gugm8.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/75be933bly1ftoe9gni6nj20k7089glv.jpg">
+<meta property="article:published_time" content="2020-02-06T09:03:05.000Z">
+<meta property="article:modified_time" content="2020-02-06T09:03:51.192Z">
+<meta property="article:author" content="李浩">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/75be933bly1ftof3p13lbj20gl06jq35.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/02/06/store总结/"/>
+
+
+
+
+
+  <title>store总结 | 李浩的博客</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">李浩的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">lhao</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/06/store%E6%80%BB%E7%BB%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李浩">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李浩的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">store总结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-06T17:03:05+08:00">
+                2020-02-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="项目改进过程"><a href="#项目改进过程" class="headerlink" title="项目改进过程"></a>项目改进过程</h2><p><a href="http://ww1.sinaimg.cn/large/75be933bly1ftof3p13lbj20gl06jq35.jpg" target="_blank" rel="noopener"><img src="http://ww1.sinaimg.cn/large/75be933bly1ftof3p13lbj20gl06jq35.jpg" alt="img"></a></p>
+<h3 id="jsp"><a href="#jsp" class="headerlink" title="jsp"></a>jsp</h3><p>这部分纯碎使用jsp开发，目的是熟悉jsp的基础知识．<br>所用到的知识包括：</p>
+<ol>
+<li>JSP基础语法</li>
+<li>生命周期</li>
+<li>页面之间跳转</li>
+<li>使用bean</li>
+</ol>
+<h4 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h4><p><a href="http://ww1.sinaimg.cn/large/75be933bly1ftnhswm4sej20d70jdmxm.jpg" target="_blank" rel="noopener"><img src="http://ww1.sinaimg.cn/large/75be933bly1ftnhswm4sej20d70jdmxm.jpg" alt="img"></a></p>
+<h4 id="页面跳转"><a href="#页面跳转" class="headerlink" title="页面跳转"></a>页面跳转</h4><p>页面之间直接使用超链接进行跳转.href一般为本路路径下目标jsp文件位置.<br>例:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href&#x3D;&quot;&lt;%&#x3D;request.getContextPath()%&gt;&#x2F;catagory.jsp?add&#x3D;&lt;%&#x3D;book.getmBookId()%&gt;&quot;&gt;</span><br><span class="line">requst.getContextPath获取的是应用的根路径</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="使用Bean"><a href="#使用Bean" class="headerlink" title="使用Bean"></a>使用Bean</h4><p>例:<br><a href="jsp:useBean">jsp:useBean</a>元素用来定位或初始化一个JavaBeans组件。<a href="jsp:useBean">jsp:useBean</a>首先会尝试定位Bean实例，如果其不存在，则会依据class名称进行实例化。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;jsp:useBean id&#x3D;&quot;bookBean&quot; class&#x3D;&quot;mypack.dao.BookDB&quot; scope&#x3D;&quot;session&quot; &#x2F;&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="JDBC"><a href="#JDBC" class="headerlink" title="JDBC"></a>JDBC</h3><p>初始时使用JDBC访问数据库.比较麻烦,访问数据库分为以下几个步骤:</p>
+<ol>
+<li>向DriverManager注册驱动器</li>
+<li>建立与数据库的链接 con = java.sql.DriverManager.getConnection(url, user, pass)</li>
+<li>创建State对象,准备执行SQL语句 Statement stat = con.createStatement()</li>
+<li>执行SQL语句 ResultSet set = stat.executeQuery(“sql sentence”)</li>
+<li>访问set中的结果集</li>
+<li>依次关闭Resultset Statement Connection</li>
+</ol>
+<p>配置数据源</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;Resource name&#x3D;&quot;jdbc&#x2F;BookDB&quot; auth&#x3D;&quot;Container&quot; type&#x3D;&quot;javax.sql.DataSource&quot;</span><br><span class="line">maxActive&#x3D;&quot;100&quot; maxIdle&#x3D;&quot;30&quot; maxWait&#x3D;&quot;10000&quot; username&#x3D;&quot;root&quot; password&#x3D;&quot;123456&quot;</span><br><span class="line">driverClassName&#x3D;&quot;com.mysql.jdbc.Driver&quot;</span><br><span class="line">url&#x3D;&quot;jdbc:mysql:&#x2F;&#x2F;localhost:3306&#x2F;bookdb?autoReconnect&#x3D;true&quot;&#x2F;&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>web.xml中声明数据源</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;resource-ref&gt;</span><br><span class="line">    &lt;description&gt;DB Connection&lt;&#x2F;description&gt;</span><br><span class="line">    &lt;res-ref-name&gt;jdbc&#x2F;BookDB&lt;&#x2F;res-ref-name&gt;</span><br><span class="line">    &lt;res-type&gt;javax.sql.DataSource&lt;&#x2F;res-type&gt;</span><br><span class="line">    &lt;res-auth&gt;Container&lt;&#x2F;res-auth&gt;</span><br><span class="line">&lt;&#x2F;resource-ref&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>代码中定位数据源</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Context ctx &#x3D; new InitialContext();</span><br><span class="line">if (ctx &#x3D;&#x3D; null) &#123;</span><br><span class="line">	throw new Exception(&quot;No Context&quot;);</span><br><span class="line">&#125;</span><br><span class="line">mDataSource &#x3D; (DataSource)ctx.lookup(&quot;java:comp&#x2F;env&#x2F;jdbc&#x2F;BookDB&quot;);</span><br></pre></td></tr></table></figure>
+
+<p>直接使用datasource 获取连接<br><code>mDataSource.getConnection();</code></p>
+<hr>
+<h3 id="Maven"><a href="#Maven" class="headerlink" title="Maven"></a>Maven</h3><p>项目结构图<br><a href="http://ww1.sinaimg.cn/large/75be933bly1fto7uxum2fj20b70gugm8.jpg" target="_blank" rel="noopener"><img src="http://ww1.sinaimg.cn/large/75be933bly1fto7uxum2fj20b70gugm8.jpg" alt="img"></a></p>
+<p>Maven用来解决项目中的依赖问题<br>右键项目,选择 add fragment support,添加maven支持.便会自动生成.pox文件</p>
+<p>需要将之间的webapp目录完全拷贝到src/main目录下,不然打包的时候无法将web.xml和.jsp文件放到war包中,自然也就无法运行</p>
+<h3 id="引入Spring"><a href="#引入Spring" class="headerlink" title="引入Spring"></a>引入Spring</h3><p>项目里使用Java Config,没有使用xml方式.<br>替代在web.xml中配置<em>dispatchservlet和contextloderlistener</em><br><a href="http://ww1.sinaimg.cn/large/75be933bly1ftoe9gni6nj20k7089glv.jpg" target="_blank" rel="noopener"><img src="http://ww1.sinaimg.cn/large/75be933bly1ftoe9gni6nj20k7089glv.jpg" alt="img"></a></p>
+<h3 id="使用JDBCtemplate"><a href="#使用JDBCtemplate" class="headerlink" title="使用JDBCtemplate"></a>使用JDBCtemplate</h3><p>初始阶段直接使用JDBC访问数据库.代码有重复,并且抛出的异常信息不明确,使用Spring提供的JDBCTemplate不仅可以减少不必要的代码,还可以提供更加明确的异常信息.</p>
+<p>首先需要配置数据源 (JNDI数据源 连接池数据源 JDBC驱动数据源)</p>
+<ol>
+<li><p>使用连接池数据源</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@Bean</span><br><span class="line"> public BasicDataSource dataSource() &#123;</span><br><span class="line">     BasicDataSource ds &#x3D; new BasicDataSource();</span><br><span class="line">     ds.setDriverClassName(&quot;com.mysql.jdbc.Driver&quot;);</span><br><span class="line">     ds.setUrl(&quot;jdbc:mysql:&#x2F;&#x2F;127.0.0.1:3306&#x2F;bookdb?useUnicode&#x3D;true&amp;characterEncoding&#x3D;UTF-8&quot;);</span><br><span class="line">     ds.setUsername(&quot;root&quot;);</span><br><span class="line">     ds.setPassword(&quot;123456&quot;);</span><br><span class="line">     return ds;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>注册模板</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@Bean</span><br><span class="line">public JdbcTemplate jdbcTemplate(BasicDataSource dataSource) &#123;</span><br><span class="line">    return new JdbcTemplate(dataSource);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用模板</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@AutoWired</span><br><span class="line">private JdbcOperations jdbcOperations; &#x2F;&#x2F;interface of jdbctemplate</span><br><span class="line">   public List&lt;Book&gt; getBooks() &#123;</span><br><span class="line">       List&lt;Book&gt; list &#x3D;  jdbcOperations.query(&quot;select * from book&quot;, new BookRowMapper());</span><br><span class="line">       return list;</span><br><span class="line">   &#125;</span><br><span class="line">   private static final class BookRowMapper implements RowMapper&lt;Book&gt; &#123;</span><br><span class="line"></span><br><span class="line">   	public Book mapRow(ResultSet res, int rowNum) throws SQLException &#123;</span><br><span class="line">           return new Book(res.getString(1), res.getString(2), res.getFloat(3), res.getString(4));</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用SessionFactory"><a href="#使用SessionFactory" class="headerlink" title="使用SessionFactory"></a>使用SessionFactory</h3><p>使用模板解决了重复代码的问题,但需要手动建立对象和数据库表之间的映射关系.ORM解决了这个问题,常用的ORM框架有Hibernate\Mybaits<br><strong>在Spring中如何集成Hibernate框架:</strong><br>sessionfactory—&gt; session, 通过session进行增删改查.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; RootConfig</span><br><span class="line">   	@Bean</span><br><span class="line">       public LocalSessionFactoryBean sessionFactoryBean(BasicDataSource dataSource) &#123;</span><br><span class="line">           LocalSessionFactoryBean sessionFactoryBean &#x3D; new LocalSessionFactoryBean();</span><br><span class="line">           sessionFactoryBean.setDataSource(dataSource);</span><br><span class="line">           sessionFactoryBean.setPackagesToScan(&quot;mypack.pojo&quot;);</span><br><span class="line">           Properties properties &#x3D; new Properties();</span><br><span class="line">           properties.setProperty(&quot;dialect&quot;, &quot;org.hibernate.dialect.MySQLDialect&quot;);</span><br><span class="line">           sessionFactoryBean.setHibernateProperties(properties);</span><br><span class="line">           sessionFactoryBean.setAnnotatedClasses(new Class&lt;?&gt;[]&#123;Book.class&#125;);</span><br><span class="line"></span><br><span class="line">           return sessionFactoryBean;</span><br><span class="line">       &#125;</span><br><span class="line">public List&lt;Book&gt; getAll() &#123;</span><br><span class="line">    List&lt;Book&gt; list &#x3D;  (List&lt;Book&gt;)sessionFactory.getCurrentSession().createCriteria(Book.class).list();</span><br><span class="line">    return list;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>添加依赖</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.hibernate&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;hibernate-core&lt;&#x2F;artifactId&gt;</span><br><span class="line">    &lt;version&gt;4.3.0.Final&lt;&#x2F;version&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>添加注解</strong></p>
+<ul>
+<li><p>在Repository类或方法上需要添加@Transactional注解;否则报错:<br>Could not obtain transaction-synchronized Session for current thread;<br>nested exception is org.hibernate.HibernateException:<br>Could not obtain transaction-synchronized Session for current thread</p>
+</li>
+<li><p>实体需要添加@Entity和@Table注解,并注明primery key:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@Id</span><br><span class="line">@Column(name &#x3D; &quot;id&quot;)  &#x2F;&#x2F;没有注解的话,默认属性名对应数据库中的列名,不一致会报错&quot;Unknown column xx in &#39;field list&#39;&quot;</span><br><span class="line">private String mBookId;</span><br><span class="line">@Column(name &#x3D; &quot;name&quot;)</span><br><span class="line">private String mBookName;</span><br><span class="line">@Column(name &#x3D; &quot;price&quot;)</span><br><span class="line">private float mPrice;</span><br><span class="line">@Column(name &#x3D; &quot;writer&quot;)</span><br><span class="line">private String mWriter;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>RootConfig需要添加@EnableTransactionManagement,并注册HibernateTransactionManager bean.</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@Bean</span><br><span class="line">public HibernateTransactionManager manager(SessionFactory sessionFactory) &#123;</span><br><span class="line">    HibernateTransactionManager manager &#x3D;  new HibernateTransactionManager();</span><br><span class="line">    manager.setSessionFactory(sessionFactory);</span><br><span class="line">    return manager;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>捕获异常</strong><br>JDBCTemplate中可以捕获Hibernate的异常并使用Spring的非检查型异常抛出;在这里使用session进行数据库操作,如何捕获抛出Hibernate中的异常呢?</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;在所有@Repository注解的类中添加一个通知器,捕获并抛出异常</span><br><span class="line">@Bean</span><br><span class="line">    public BeanPostProcessor persistantenceTransaction() &#123;</span><br><span class="line">        return new PersistenceExceptionTranslationPostProcessor();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="使用EntityManager"><a href="#使用EntityManager" class="headerlink" title="使用EntityManager"></a>使用EntityManager</h3><ul>
+<li>配置EntityManagerFactory</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;位于 RootConfig</span><br><span class="line">    @Bean</span><br><span class="line">    public JpaVendorAdapter jpaVendorAdapter() &#123;</span><br><span class="line">        HibernateJpaVendorAdapter adapter &#x3D; new HibernateJpaVendorAdapter();</span><br><span class="line"></span><br><span class="line">        adapter.setDatabase(Database.MYSQL);</span><br><span class="line">        adapter.setShowSql(true);</span><br><span class="line">        adapter.setGenerateDdl(false);</span><br><span class="line">        adapter.setDatabasePlatform(&quot;org.hibernate.dialect.MySQLDialect&quot;);</span><br><span class="line"></span><br><span class="line">        return adapter;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Bean</span><br><span class="line">    public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean(DataSource dataSource, JpaVendorAdapter adapter) &#123;</span><br><span class="line">        LocalContainerEntityManagerFactoryBean cef &#x3D; new LocalContainerEntityManagerFactoryBean();</span><br><span class="line">        cef.setDataSource(dataSource);</span><br><span class="line">        cef.setJpaVendorAdapter(adapter);</span><br><span class="line">        cef.setPackagesToScan(&quot;mypack.pojo&quot;);</span><br><span class="line"></span><br><span class="line">        return cef;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用EntityManager</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@PersistenceContext  &#x2F;&#x2F;注解为JPA提供,需要注册PersistenceAnnotationBeanPostProcessor才能让Spring识别</span><br><span class="line">private EntityManager em;   &#x2F;&#x2F;但我的代码中并未注册,也正常运行,不知道系统在哪注册了.</span><br></pre></td></tr></table></figure>
+
+<h3 id="Spring-data-jpa"><a href="#Spring-data-jpa" class="headerlink" title="Spring data jpa"></a>Spring data jpa</h3><p>由Spring在运行时自动生成持久化方法</p>
+<ul>
+<li>提供extends JpaRepository&lt;obj, id&gt;的接口</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@Repository</span><br><span class="line">public interface BookRepository extends JpaRepository&lt;Book, String&gt; &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在Controller中直接使用</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ServletContext servletContext &#x3D; request.getSession().getServletContext();</span><br><span class="line">ApplicationContext context &#x3D; WebApplicationContextUtils.getRequiredWebApplicationContext(servletContext);</span><br><span class="line">BookRepository repository &#x3D; context.getBean(BookRepository.class);</span><br><span class="line">List&lt;Book&gt; list &#x3D; repository.findAll();</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">李浩</p>
+              <p class="site-description motion-element" itemprop="description">北京大学 | 软件工程</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives%7C%7Carchive">
+              
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">1.</span> <span class="nav-text">总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#项目改进过程"><span class="nav-number">1.1.</span> <span class="nav-text">项目改进过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#jsp"><span class="nav-number">1.1.1.</span> <span class="nav-text">jsp</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#生命周期"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">生命周期</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#页面跳转"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">页面跳转</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用Bean"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">使用Bean</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JDBC"><span class="nav-number">1.1.2.</span> <span class="nav-text">JDBC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Maven"><span class="nav-number">1.1.3.</span> <span class="nav-text">Maven</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引入Spring"><span class="nav-number">1.1.4.</span> <span class="nav-text">引入Spring</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用JDBCtemplate"><span class="nav-number">1.1.5.</span> <span class="nav-text">使用JDBCtemplate</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用SessionFactory"><span class="nav-number">1.1.6.</span> <span class="nav-text">使用SessionFactory</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用EntityManager"><span class="nav-number">1.1.7.</span> <span class="nav-text">使用EntityManager</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring-data-jpa"><span class="nav-number">1.1.8.</span> <span class="nav-text">Spring data jpa</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">李浩</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
